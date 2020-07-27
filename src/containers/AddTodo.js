@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     width: 315,
     height: 90,
     borderRadius: 30,
-    marginTop: 60,
+    marginTop: 30,
   },
   button: {
     backgroundColor: '#E49401',
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   },
   textCard: {
     color: '#FFFFFF',
-    fontSize: 18,
+    fontSize: 22,
     fontFamily: 'Muli-Bold',
     position: 'absolute',
     top: 20,

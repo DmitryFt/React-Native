@@ -2,8 +2,12 @@
 import React from 'react';
 import {Text, View, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
+//other deps
+import {useNavigation} from '@react-navigation/native';
 
 const TodoList = ({todos, toggleTodo, deleteTodo, completed}) => {
+  //nav
+  const navigation = useNavigation();
   return (
     <>
       <FlatList
@@ -18,6 +22,15 @@ const TodoList = ({todos, toggleTodo, deleteTodo, completed}) => {
               ]}>
               {item.text}
             </Text>
+            <TouchableOpacity
+              style={styles.detailsButton}
+              onPress={() =>
+                navigation.navigate('Details', {
+                  todoId: item.id,
+                  todoText: item.text,
+                })
+              }
+            />
             <TouchableOpacity
               style={styles.deleteButton}
               onPress={() => deleteTodo(item.id)}
@@ -36,11 +49,21 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 25,
     color: '#55418E',
-    fontSize: 17,
+    fontSize: 20,
     padding: 10,
+    paddingHorizontal: 40,
     margin: 5,
     textAlign: 'center',
     width: 315,
+  },
+  detailsButton: {
+    backgroundColor: '#009900',
+    width: 15,
+    height: 15,
+    borderRadius: 50,
+    position: 'absolute',
+    left: 20,
+    top: '35%',
   },
   deleteButton: {
     backgroundColor: '#ff2400',
